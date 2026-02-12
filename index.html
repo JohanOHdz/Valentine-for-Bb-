@@ -14,20 +14,23 @@ body {
   color: white;
 }
 
-/* Background slideshow */
+/* Background slideshow with 4 images */
 .bg {
   position: fixed;
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
-  animation: slide 5s infinite alternate ease-in-out;
+  animation: slide 16s infinite ease-in-out;
   z-index: -2;
 }
 
 @keyframes slide {
   0%   { background-image: url("pic1.jpg"); }
-  100% { background-image: url("pic2.jpg"); }
+  25%  { background-image: url("pic2.jpg"); }
+  50%  { background-image: url("pic3.jpg"); } /* placeholder */
+  75%  { background-image: url("pic4.jpg"); } /* placeholder */
+  100% { background-image: url("pic1.jpg"); }
 }
 
 /* Dark overlay */
@@ -44,15 +47,21 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertical center */
-  align-items: center;     /* horizontal center */
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 h1 {
-  margin: 0; /* removes white space at top */
+  margin: 0;
   font-size: 3em;
   text-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+/* Buttons side-by-side */
+.button-row {
+  display: flex;
+  gap: 20px;
 }
 
 button {
@@ -74,14 +83,10 @@ button:hover {
   color: white;
 }
 
-/* NO button starts centered but can move */
 #no {
   background: pink;
   color: red;
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
+  position: relative; /* allows moving but starts inline */
 }
 
 /* Floating hearts */
@@ -98,6 +103,36 @@ button:hover {
     opacity: 0;
   }
 }
+
+/* YES screen gallery */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 40px;
+}
+
+.media {
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  animation: mediaSlide 12s infinite ease-in-out;
+}
+
+@keyframes mediaSlide {
+  0%   { background-image: url("pic1.jpg"); }
+  33%  { background-image: url("pic2.jpg"); }
+  66%  { background-image: url("pic3.jpg"); }
+  100% { background-image: url("pic4.jpg"); }
+}
+
+video, img.gif {
+  width: 300px;
+  border-radius: 20px;
+}
 </style>
 </head>
 
@@ -108,14 +143,29 @@ button:hover {
 
 <div class="container">
   <h1>Will you be my Valentine bb? 🥺💖</h1>
-  <button id="yes" onclick="yesClicked()">YES!!! 💘(pls🥺)</button>
-  <button id="no" onmouseover="moveNo()">NO 😢</button>
+
+  <div class="button-row">
+    <button id="yes" onclick="yesClicked()">YES!!! 💘(pls🥺)</button>
+    <button id="no" onmouseover="moveNo()">NO 😢</button>
+  </div>
 </div>
 
 <script>
 function yesClicked() {
-  document.body.innerHTML =
-    "<h1 style='margin-top:40vh'>Ar ar ar ar 🦭👏 bb is now happy 🫠❤️ I love you my love!! 💖🫠</h1>";
+  document.body.innerHTML = `
+    <div class="gallery">
+      <h1>I love you so much ❤️</h1>
+
+      <!-- Placeholder GIF -->
+      <img class="gif" src="gif1.gif" alt="cute gif">
+
+      <!-- OR placeholder video -->
+      <video src="video1.mp4" autoplay loop muted></video>
+
+      <!-- Slideshow media box -->
+      <div class="media"></div>
+    </div>
+  `;
 }
 
 function moveNo() {
@@ -127,6 +177,7 @@ function moveNo() {
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
 
+  noBtn.style.position = "absolute";
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 }
