@@ -39,13 +39,18 @@ body {
   z-index: -1;
 }
 
-/* Content */
-
+/* Centered content */
 .container {
-  margin-top: 15vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  gap: 15px;
 }
 
 h1 {
+  margin: 0; /* removes white space at top */
   font-size: 3em;
   text-shadow: 0 0 15px rgba(255,255,255,0.6);
 }
@@ -53,7 +58,6 @@ h1 {
 button {
   font-size: 20px;
   padding: 15px 30px;
-  margin: 10px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -70,10 +74,14 @@ button:hover {
   color: white;
 }
 
+/* NO button starts centered but can move */
 #no {
   background: pink;
   color: red;
   position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
 }
 
 /* Floating hearts */
