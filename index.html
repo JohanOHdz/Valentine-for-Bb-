@@ -21,14 +21,15 @@ body {
   height: 100%;
   background-size: cover;
   background-position: center;
-  animation: slide 24s infinite ease-in-out;
+  animation: slide 8s infinite ease-in-out;
   z-index: -2;
 }
 
 @keyframes slide {
   0%   { background-image: url("pic1.jpg"); }
-  50%  { background-image: url("pic2.jpg"); } /* add more if you want */
-  100%  { background-image: url("pic3.jpg"); }
+  33.33%  { background-image: url("pic2.jpg"); } /* add more if you want */
+  66.66%  { background-image: url("pic3.jpg"); }
+  100%  { background-image: url("pic1.jpg"): }
 }
 
 /* Dark overlay */
@@ -136,7 +137,7 @@ function yesClicked() {
   document.body.innerHTML = `
     <div class="bg"></div>
     <div class="overlay"></div>
-    <h1 style="position:fixed; top:20px; width:100%;">I LOVE YOU SO MUCH ❤️</h1>
+    <h1 style="position:fixed; top:10px; width:100%;"> ar ar ar🦭👏👏 I LOVE YOU SO MUCH 🥰❤️</h1>
 
     <!-- Moving seal GIFs -->
     <img src="seal1.gif" class="seal" style="top:20%; left:10%;">
