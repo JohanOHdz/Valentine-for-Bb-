@@ -14,22 +14,24 @@ body {
   color: white;
 }
 
-/* Background slideshow with 4 images */
+/* Background slideshow with MANY placeholders */
 .bg {
   position: fixed;
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
-  animation: slide 16s infinite ease-in-out;
+  animation: slide 24s infinite ease-in-out;
   z-index: -2;
 }
 
 @keyframes slide {
   0%   { background-image: url("pic1.jpg"); }
-  25%  { background-image: url("pic2.jpg"); }
-  50%  { background-image: url("pic3.jpg"); } /* placeholder */
-  75%  { background-image: url("pic4.jpg"); } /* placeholder */
+  16%  { background-image: url("pic2.jpg"); }
+  32%  { background-image: url("pic3.jpg"); }
+  48%  { background-image: url("pic4.jpg"); }
+  64%  { background-image: url("pic5.jpg"); } /* add more if you want */
+  80%  { background-image: url("pic6.jpg"); }
   100% { background-image: url("pic1.jpg"); }
 }
 
@@ -86,7 +88,7 @@ button:hover {
 #no {
   background: pink;
   color: red;
-  position: relative; /* allows moving but starts inline */
+  position: relative;
 }
 
 /* Floating hearts */
@@ -104,34 +106,17 @@ button:hover {
   }
 }
 
-/* YES screen gallery */
-.gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding-top: 40px;
+/* Seals that move around after YES */
+.seal {
+  position: fixed;
+  width: 120px;
+  pointer-events: none;
+  animation: wander 6s infinite alternate ease-in-out;
 }
 
-.media {
-  width: 300px;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-  animation: mediaSlide 12s infinite ease-in-out;
-}
-
-@keyframes mediaSlide {
-  0%   { background-image: url("pic1.jpg"); }
-  33%  { background-image: url("pic2.jpg"); }
-  66%  { background-image: url("pic3.jpg"); }
-  100% { background-image: url("pic4.jpg"); }
-}
-
-video, img.gif {
-  width: 300px;
-  border-radius: 20px;
+@keyframes wander {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to   { transform: translate(200px, -150px) rotate(10deg); }
 }
 </style>
 </head>
@@ -153,18 +138,14 @@ video, img.gif {
 <script>
 function yesClicked() {
   document.body.innerHTML = `
-    <div class="gallery">
-      <h1>I love you so much ❤️</h1>
+    <div class="bg"></div>
+    <div class="overlay"></div>
+    <h1 style="position:fixed; top:20px; width:100%;">I LOVE YOU SO MUCH ❤️</h1>
 
-      <!-- Placeholder GIF -->
-      <img class="gif" src="gif1.gif" alt="cute gif">
-
-      <!-- OR placeholder video -->
-      <video src="video1.mp4" autoplay loop muted></video>
-
-      <!-- Slideshow media box -->
-      <div class="media"></div>
-    </div>
+    <!-- Moving seal GIFs -->
+    <img src="seal1.gif" class="seal" style="top:20%; left:10%;">
+    <img src="seal2.gif" class="seal" style="top:60%; left:70%; animation-duration:8s;">
+    <img src="seal3.gif" class="seal" style="top:40%; left:40%; animation-duration:10s;">
   `;
 }
 
