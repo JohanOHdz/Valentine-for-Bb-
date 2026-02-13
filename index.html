@@ -29,7 +29,7 @@ body {
   0%   { background-image: url("pic1.jpg"); }
   33.33%  { background-image: url("pic2.jpg"); } /* add more if you want */
   66.66%  { background-image: url("pic3.jpg"); }
-  100%  { background-image: url("pic4.jpg"): }
+  100%  { background-image: url("pic4.jpg"); }
 }
 
 /* Dark overlay */
@@ -137,9 +137,9 @@ function yesClicked() {
   document.body.innerHTML = `
     <div class="bg"></div>
     <div class="overlay"></div>
-    <h1 style="position:fixed; top:300px; width:100%;"> ar ar ar🦭👏👏 I LOVE YOU SO MUCH 🥰❤️</h1>
 
-    <!-- Moving seal GIFs -->
+    <h1 class="yes-text">ar ar ar 🦭👏👏 I LOVE YOU SO MUCH 🥰❤️</h1>
+
     <img src="seal1.gif" class="seal" style="top:20%; left:10%;">
     <img src="seal2.gif" class="seal" style="top:60%; left:70%; animation-duration:8s;">
     <img src="seal3.gif" class="seal" style="top:40%; left:40%; animation-duration:10s;">
@@ -159,6 +159,20 @@ function moveNo() {
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 }
+.seal {
+  position: fixed;
+  width: 120px;
+  pointer-events: none;
+  animation: wander 6s infinite alternate ease-in-out;
+  z-index: 0;   /* behind */
+}
+
+.yes-text {
+  position: fixed;
+  top: 300px;
+  width: 100%;
+  z-index: 2;   /* in front */
+}
 
 /* Floating hearts */
 setInterval(() => {
@@ -173,6 +187,7 @@ setInterval(() => {
 
   setTimeout(() => heart.remove(), 6000);
 }, 250);
+  
 </script>
 
 </body>
