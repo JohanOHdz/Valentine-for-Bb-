@@ -27,8 +27,8 @@ body {
 
 @keyframes slide {
   0%   { background-image: url("pic1.jpg"); }
-  50%  { background-image: url("pic2.jpg"); } /* add more if you want */
-  100%  { background-image: url("pic3.jpg"); }
+  50%  { background-image: url("pic2.jpg"); }
+  100% { background-image: url("pic3.jpg"); }
 }
 
 /* Dark overlay */
@@ -136,18 +136,21 @@ function yesClicked() {
   document.body.innerHTML = `
     <div class="bg"></div>
     <div class="overlay"></div>
-    <h1 style="position:fixed; top:300px; width:100%;"> ar ar ar🦭👏👏 I LOVE YOU SO MUCH 🥰❤️</h1>
 
     <!-- Moving seal GIFs -->
     <img src="seal1.gif" class="seal" style="top:20%; left:10%;">
     <img src="seal2.gif" class="seal" style="top:60%; left:70%; animation-duration:8s;">
     <img src="seal3.gif" class="seal" style="top:40%; left:40%; animation-duration:10s;">
+
+    <!-- Text on top -->
+    <h1 style="position:fixed; top:300px; width:100%; z-index: 10; text-align:center;">
+      ar ar ar🦭👏👏 I LOVE YOU SO MUCH 🥰❤️
+    </h1>
   `;
 }
 
 function moveNo() {
   const noBtn = document.getElementById("no");
-
   const maxX = window.innerWidth - noBtn.offsetWidth;
   const maxY = window.innerHeight - noBtn.offsetHeight;
 
@@ -164,12 +167,9 @@ setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
   heart.innerHTML = "💖";
-
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.animationDuration = (4 + Math.random() * 2) + "s";
-
   document.body.appendChild(heart);
-
   setTimeout(() => heart.remove(), 6000);
 }, 250);
 </script>
